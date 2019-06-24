@@ -194,7 +194,7 @@
                                             <div class="register-form-wrap">
                                                 <h3>registration Form</h3>
                                                 <div class="register-form">
-                                                    <form action="index.html">
+                                                    <form action="register.php" method="POST" enctype="multipart/form-data">
                                                         <div class="row">
                                                             <div class="col-12 col-sm-1">
                                                                 <div class="form-group">
@@ -242,7 +242,7 @@
                                                             <div class="col-12 col-sm-4">
                                                                 <div class="form-group">
                                                                     <label for="register_password">ID Number</label>
-                                                                    <input type="number" class="form-control" id="register_password" name="register_id_number" />
+                                                                    <input type="number" class="form-control" id="register_id_number" name="register_id_number" />
                                                                 </div>
                                                             </div>
 
@@ -257,41 +257,41 @@
                                                             <div class="col-12 col-sm-2">
                                                                 <div class="form-group">
                                                                     <label for="register_name">Postal Address</label>
-                                                                    <input type="text" class="form-control" id="register_name" name="register_title" />
+                                                                    <input type="text" class="form-control" id="register_name" name="register_postal" />
                                                                 </div>
                                                             </div>
 
                                                             <div class="col-12 col-sm-2">
                                                                 <div class="form-group">
                                                                     <label for="register_password">City/ Town</label>
-                                                                    <input type="text" class="form-control" id="register_name" name="register_first_name" />
+                                                                    <input type="text" class="form-control" id="register_name" name="register_town" />
                                                                 </div>
                                                             </div>
 
                                                             <div class="col-12 col-sm-2">
                                                                 <div class="form-group">
                                                                     <label for="register_password">Postal Code</label>
-                                                                    <input type="text" class="form-control" id="register_name" name="register_middle_name" />
+                                                                    <input type="text" class="form-control" id="register_name" name="register_code" />
                                                                 </div>
                                                             </div>
 
                                                             <div class="col-12 col-sm-2">
                                                                 <div class="form-group">
                                                                     <label for="register_password">County</label>
-                                                                    <input type="text" class="form-control" id="register_name" name="register_surname" />
+                                                                    <input type="text" class="form-control" id="register_name" name="register_county" />
                                                                 </div>
                                                             </div>
 
                                                             <div class="col-12 col-sm-2">
                                                                 <div class="form-group">
                                                                     <label for="register_password">Country</label>
-                                                                    <input type="text" class="form-control" id="register_name" name="register_nickname" />
+                                                                    <input type="text" class="form-control" id="register_name" name="register_country" />
                                                                 </div>
                                                             </div>
                                                             <div class="col-12 col-sm-2">
                                                                 <div class="form-group">
                                                                     <label for="register_password">Cell Phone</label>
-                                                                    <input type="text" class="form-control" id="register_name" name="register_nickname" />
+                                                                    <input type="text" class="form-control" id="register_name" name="register_phone" />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -299,14 +299,14 @@
                                                             <div class="col-12 col-sm-4">
                                                                 <div class="form-group">
                                                                     <label for="register_password">Create Password</label>
-                                                                    <input type="password" class="form-control" id="register_name" name="register_nickname" />
+                                                                    <input type="password" class="form-control" id="register_password" name="register_password" />
                                                                 </div>
                                                             </div>
 
                                                             <div class="col-12 col-sm-4">
                                                                 <div class="form-group">
-                                                                    <label for="register_password">Retype Password</label>
-                                                                    <input type="password" class="form-control" id="register_name" name="register_nickname" />
+                                                                    <label for="register_password">Retype Password &nbsp;&nbsp;<span id="retype" style="color: red;"></span></label>
+                                                                    <input type="password" class="form-control" id="register_retype_pass" name="register_retype_pass" onblur="checkPass()" />
                                                                 </div>
                                                             </div>
 
@@ -324,7 +324,7 @@
                                                                 <input type="checkbox" class="custom-control-input" id="customCheck1">
                                                                 <label class="custom-control-label" for="customCheck1"> I have read and agree to the <a href="register.html#">ROBA</a> Terms of Service</label>
                                                             </div>
-                                                            <input type="submit" class="btn btn-reg" value="Register">
+                                                            <input type="submit" name="submit" id="submit" class="btn btn-reg" value="Register">
                                                         </div>
                                                     </form>
                                                 </div>
@@ -453,6 +453,19 @@
 <!-- SITE SCRIPT  -->
 
 <!-- Jquery JS  -->
+<script>
+    function checkPass(){
+        var pass = document.getElementById('register_password').value;
+        var retype = document.getElementById('register_retype_pass').value;
+        console.log(pass);
+        console.log(retype);
+         
+         if(pass !== retype){
+            document.getElementById('retype').innerHTML = "Password doesn't match";
+            document.getElementById("submit").setAttribute("disabled");
+         }
+    }
+</script>
 <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
 
 <!-- POPPER JS -->
