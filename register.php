@@ -35,8 +35,6 @@ $target_dir = "assets/img/committee/";
       if($imageFileType != "jpg" && $imageFileType != "JPG" && $imageFileType != "png" && $imageFileType != "jpeg"
       && $imageFileType != "gif" && $imageFileType != "webp") {
         echo "<br>Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-        $profile = basename($_FILES["register_file"]["name"]);
-        echo $profile;
 
         $uploadOk = 0;
       }
@@ -47,7 +45,7 @@ $target_dir = "assets/img/committee/";
       // if everything is ok, try to upload file
     } else {
       if (move_uploaded_file($_FILES["register_file"]["tmp_name"], $target_file)) {
-          echo "The file ".basename( $_FILES["register_file"]["name"]). " has been uploaded.";
+          $profile = basename($_FILES["register_file"]["name"]);
 
           $sql = "INSERT INTO members (title, first_name, middle_name, last_name, nickname, profile , id_number, completion_year, email, postal_address, town, postal_code, county, country, phone_number, password)
            VALUES ('$title', '$first_name', '$middle_name', '$last_name', '$nickname', '$profile' ,'$id_number', '$completion_year', '$email', '$postal_address', '$town', '$postal_code', '$county', '$country', '$phone_number', '$password')";
