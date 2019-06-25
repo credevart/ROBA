@@ -45,10 +45,9 @@ $target_dir = "assets/img/committee/";
       // if everything is ok, try to upload file
     } else {
       if (move_uploaded_file($_FILES["register_file"]["tmp_name"], $target_file)) {
-          $profile = basename($_FILES["register_file"]["name"]);
 
           $sql = "INSERT INTO members (title, first_name, middle_name, last_name, nickname, profile , id_number, completion_year, email, postal_address, town, postal_code, county, country, phone_number, password)
-           VALUES ('$title', '$first_name', '$middle_name', '$last_name', '$nickname', '$profile' ,'$id_number', '$completion_year', '$email', '$postal_address', '$town', '$postal_code', '$county', '$country', '$phone_number', '$password')";
+           VALUES ('$title', '$first_name', '$middle_name', '$last_name', '$nickname', '$target_file' ,'$id_number', '$completion_year', '$email', '$postal_address', '$town', '$postal_code', '$county', '$country', '$phone_number', '$password')";
           
           if($con->query($sql)==true){
            header("location: login.html");
